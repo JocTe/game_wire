@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Ajouter un jeu</h2>
+  <%= simple_form_for @game do |f| %>
+    <%= f.input :name, label: 'Nom' %>
+    <%= f.input :description, label: 'Description' %>
+    <!--- <%= f.input :photos, as: :file, input_html: { multiple: true } %> -->
+    <%= f.submit "Ajouter", class: "btn btn-primary" %>
+  <% end %>
+</div>
