@@ -35,3 +35,4 @@ games.each do |game|
    Game.create!(game)
 end
 puts "------Done------"
+
