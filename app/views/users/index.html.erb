@@ -1,15 +1,15 @@
 <div class="container mt-4">
-  <h2 class="text-center">Vos jeux</h2>
+  <h2 class="text-center">Vos location</h2>
 
   <div class="row row-cols-3 mt-3">    
-      <% @games.each do |game| %>
+      <% @bookings.each do |booking| %>
         <div class="col">
           <div class="card h-100">
             <img src="https://source.unsplash.com/1600x900/?game" class="card-img-top" alt="game picture">
             <div class="card-body">
-              <h5 class="card-title"><%= game.name %></h5>
-              <p class="card-text"><%= game.description.truncate(200) %></p>
-              <%= link_to "Découvrir", game_path(game), class: "btn btn-primary" %>
+              <h5 class="card-title"><%= booking.game.name %></h5>
+              <p class="card-text"><%= booking.game.description.truncate(200) %></p>
+              <%= link_to "Découvrir", game_path(booking.game), class: "btn btn-primary" %>
             </div>
           </div>
         </div>
