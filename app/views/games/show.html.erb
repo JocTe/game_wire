@@ -1,13 +1,38 @@
-<%= cl_image_tag @game.photo.key %>
-
-
 <div class="container">
-  <h2><%= @game.name %></h2>
-  <p> <%= @game.description %></p>
+  <h2 class="mt-4"><%= @game.name.capitalize %></h2>
+  <div class="d-flex flex-row bd-highlight mb-3">
+    <div class="d-flex align-items-center">
+      <i class="fas fa-user-friends"></i>
+      <p class="mb-0 pl-2">2-4 joueurs</p>
+    </div>
+    <div class="d-flex align-items-center pl-4">
+      <i class="far fa-clock"></i>
+      <p class="mb-0 pl-2">30 min.</p>
+    </div>
+  </div>
+  <%= cl_image_tag(@game.photo.key, :class => "image-full-width mb-4") %>
 
-  <%= link_to "Editer #{@game.name}", edit_game_path(@game), class: "btn btn-primary" %>
-  <%= link_to "Supprimer #{@game.name}", game_path(@game), class: "btn btn-primary", method: :delete, data: { confirm: "Supprimer : #{@game.name}" } %>
-  <%= link_to "Back to list", games_path, class: "btn btn-primary" %>
+  <div class="d-flex justify-content-between">
+    <div>
+      <h3 class="mb-2">Description</h3>
+      <p class="mb-4"> <%= @game.description %></p>
+    </div>
+    <div class="bg-white rounded p-4">
+      <div class="d-flex mb-2 justify-content-center">
+        <h5 class="mb-0 font-weight-bold">5€</h5>
+        <p class="mb-0 font-weight-light">/24h</p>
+      </div>
+      <%= link_to "Réserver", new_game_booking_path(@game), class: "btn btn-primary" %>
+    </div>
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Basic example">    
+    <%= link_to "Editer #{@game.name}", edit_game_path(@game), class: "btn btn-secondary" %>
+    <%= link_to "Supprimer #{@game.name}", game_path(@game), class: "btn btn-secondary", method: :delete, data: { confirm: "Supprimer : #{@game.name}" } %>
+  </div>
+  
 </div>
+
+<!-- <%= link_to "Back to list", games_path, class: "btn btn-primary" %> à supprimer ?-->
 
 
