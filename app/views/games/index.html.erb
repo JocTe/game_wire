@@ -3,7 +3,7 @@
 
   <div class="row row-cols-3 mt-3">    
       <% @games.each do |game| %>
-        <div class="col">
+        <div class="col mt-3">
           <div class="card h-100">            
             <img src='<%= cl_image_path(game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >            
             <div class="card-body">
