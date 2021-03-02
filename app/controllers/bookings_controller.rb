@@ -4,15 +4,16 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @game = Game.find(params[:game_id])
   end
 
   def create
-    @game = Game.find(params[:game_id])
     @booking = Booking.new(booking_params) 
     @booking.user = @user
     @booking.game = @game
     if @booking.save
-      redirect_to bookings_path
+      raise
+      redirect_to game_bookings_path(@game)
     else
       render :new
     end
