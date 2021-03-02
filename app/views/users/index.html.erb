@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <h2 class="text-center">Vos location</h2>
 
-  <div class="row row-cols-3 mt-3">    
+  <div class="row row-cols-3">    
       <% @bookings.each do |booking| %>
         <div class="col">
           <div class="card h-100">
@@ -10,8 +10,7 @@
               <h5 class="card-title"><%= booking.game.name %></h5>
               <p class="card-text"><%= booking.game.description.truncate(200) %></p>
               <%= link_to "Découvrir", game_path(booking.game), class: "btn btn-primary" %>
-              <%= link_to "Delete", game_booking_path(game_id: booking.game, id: booking), method: "DELETE", data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-            
+              <%= link_to "Delete", game_booking_path(game_id: booking.game, id: booking), method: "DELETE", data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>            
             </div>
           </div>
         </div>
