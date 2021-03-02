@@ -43,3 +43,4 @@ Booking.create!(user: morgane, game:timebomb, start_at: Date.new(2021,03,02), en
 
 
 puts "------Done------"
+
