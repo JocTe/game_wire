@@ -1,19 +1,19 @@
 class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  
+
   def index
     @games = Game.all
   end
-  
-  def show    
+
+  def show
     @game = Game.find(params[:id])
   end
- 
+
   def new
     @game = Game.new
   end
-  
-  def create    
+
+  def create
     @game = Game.new(game_params)
     @game.user = current_user
     if @game.save
@@ -22,19 +22,24 @@ class GamesController < ApplicationController
       render :new
     end
   end
-  
+
   def edit
+    @game = Game.find(params[:id])
   end
 
   def update
-    @game.update(game_params)
-    redirect_to game_path(@game)
+    @game = Game.find(params[:id])
+    if @game.update(game_params)
+      redirect_to game_path(@game), notice: 'Le jeu a bien été édité'
+    else
+      render :edit
+    end
   end
 
   def destroy
     @game = Game.find(params[:id])
     @game.destroy
-    redirect_to game_path(@game.curent_user) # redirect to ?
+    redirect_to games_path(@game) # redirect to ?
   end
 
   private

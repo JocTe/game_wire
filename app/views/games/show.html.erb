@@ -31,6 +31,8 @@
   <h2><%= @game.name %></h2>
   <p> <%= @game.description %></p>
 
+  <%= link_to "Editer #{@game.name}", edit_game_path(@game), class: "btn btn-primary" %>
+  <%= link_to "Supprimer #{@game.name}", game_path(@game), class: "btn btn-primary", method: :delete, data: { confirm: "Supprimer : #{@game.name}" } %>
   <%= link_to "Back to list", games_path, class: "btn btn-primary" %>
 </div>
 
