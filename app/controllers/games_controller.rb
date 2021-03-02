@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   end
   
   def show    
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:id])    
   end
  
   def new
@@ -39,8 +39,7 @@ class GamesController < ApplicationController
 
   private
 
-  def game_params
-    params.require(:game).permit(:name, :description)
-    # params.require(:game).permit(:name, :description, photos: [])
+  def game_params    
+    params.require(:game).permit(:name, :description, :photo)
   end
 end
