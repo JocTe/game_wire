@@ -1,10 +1,10 @@
 class BookingsController < ApplicationController
 
   before_action :set_user, only: [:new, :create]
+  before_action :set_game, only: [:new, :create]
 
   def new
     @booking = Booking.new
-    @game = Game.find(params[:game_id])
   end
 
   def create
@@ -12,8 +12,7 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.game = @game
     if @booking.save
-      raise
-      redirect_to game_bookings_path(@game)
+      redirect_to bookings_path
     else
       render :new
     end
@@ -33,5 +32,8 @@ class BookingsController < ApplicationController
 
   def set_user 
     @user = current_user
+  end
+  def set_game
+    @game = Game.find(params[:game_id])
   end
 end
