@@ -22,9 +22,24 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.input-group > .form-control {
-  flex: 0.7;
+.btn-ghost {
+  color: white;
+  border: 2px solid white;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
+
+.btn-ghost:hover {
+  opacity: 1;
+  background-color: white;
+}
+
+// .input-group > .form-control {
+//   flex: 0.7;
+// }
 
 .footer {
   display: flex;
@@ -51,6 +66,16 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease-out;
+
+   &:hover {
+    transform: scale(1.03);
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 .cards {
