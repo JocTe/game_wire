@@ -31,10 +31,13 @@
   </div>
 
   <div class="btn-group" role="group" aria-label="Basic example">    
-    <%= link_to "Editer #{@game.name}", edit_game_path(@game), class: "btn btn-secondary" %>
-    <%= link_to "Supprimer #{@game.name}", game_path(@game), class: "btn btn-secondary", method: :delete, data: { confirm: "Supprimer : #{@game.name}" } %>
-  </div>
-  
+    <% if policy(@game).edit? %>
+        <%= link_to "Editer", edit_game_path(@game), class: "btn btn-secondary" %>
+    <% end %>
+    <% if policy(@game).destroy? %>
+        <%= link_to "Supprimer", game_path(@game), class: "btn btn-secondary", method: :delete, data: { confirm: "Supprimer : #{@game.name}" } %>
+    <% end %>
+  </div>  
 </div>
 
 <!-- <%= link_to "Back to list", games_path, class: "btn btn-primary" %> à supprimer ?-->
