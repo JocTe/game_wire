@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   # get "/bookings", to: "users#index"
   resources :bookings do
     member do
-      patch ":id/accept", to: "bookings#accept"
-      patch ":id/decline", to: "bookings#decline"
+      patch "/accept", to: "bookings#accept"
+      patch "/decline", to: "bookings#decline"
     end
   end
 end

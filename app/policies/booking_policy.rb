@@ -4,7 +4,7 @@ class BookingPolicy < ApplicationPolicy
       scope.all
     end
   end
-  
+
   def create?
     true
   end
@@ -19,5 +19,13 @@ class BookingPolicy < ApplicationPolicy
 
   def destroy?
     user == record.user
+  end
+
+  def accept?
+    user == record.user
+  end
+
+  def decline?
+    accept?
   end
 end
