@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require "open-uri"
+
 puts "------Cleaning Games db------"
 Game.destroy_all
 puts "------Cleaning Users db------"
@@ -21,6 +23,14 @@ morgane = User.create!(first_name: "Morgane", last_name: "Moma", username: "Morm
 users = [jo, alexis, morgane]
 
 
+puts "------Creating Pictures------"
+wazabiPicture = URI.open('https://www.fantastik.fr/30065-large_default/jeux-de-societe-wazabi.jpg')
+bangPicture = URI.open('https://www.espritjeu.com/upload/image/bang---p-image-46524-grande.jpg')
+degoblinadePicture = URI.open('https://www.espritjeu.com/upload/image/degoblinade-p-image-67449-grande.jpg')
+codenamesPicture = URI.open('https://cdn3.philibertnet.com/353015-thickbox_default/codenames-vf.jpg')
+themindPicture = URI.open('https://cdn3.philibertnet.com/401610-thickbox_default/the-mind.jpg')
+timebombPicture = URI.open('https://images-na.ssl-images-amazon.com/images/I/71HOag4RiLL._AC_SL1404_.jpg')
+coltPicture = URI.open('https://www.espritjeu.com/upload/image/colt-express-p-image-67865-grande.jpg')
 
 puts "------Creating Games------"
 
@@ -31,6 +41,16 @@ codenames = Game.create!(name: "Codenames", description: "Codenames est un jeu d
 themind = Game.create!(name: "The name" , description: "Les joueurs doivent poser leurs cartes par ordre croissant au centre de la table. Il n’y a pas d’ordre de jeu : qui pense avoir la plus petite carte la pose en premier et ainsi de suite. On ne peut ni parler, ni se faire des signes, ni communiquer d’aucune manière ! Et pourtant, le succès est possible.", user: morgane)
 timebomb = Game.create!(name: "Time Bomb", description: "Moriarty a caché une bombe dans la plus célèbre tour de Londres. Lui et son équipe cherchent à la faire exploser et Scherlock et ses amis font tout pour contrecarrer ce plan.", user: alexis)
 colt = Game.create!(name:"Colt Express", description: "L’esprit des grands westerns dans un jeu de programmation original et subtil. Des cartes événement révélées au début de chaque manche introduisant nouvelles règles ou changements de situation.", user: alexis)
+
+
+
+wazabi.photo.attach(io: wazabiPicture, filename: 'wazabi.jpg', content_type: 'image/jpg')
+bang.photo.attach(io: bangPicture, filename: 'bang.jpg', content_type: 'image/jpg')
+degoblinade.photo.attach(io: degoblinadePicture, filename: 'degoblinade.jpg', content_type: 'image/jpg')
+codenames.photo.attach(io: codenamesPicture, filename: 'codenames.jpg', content_type: 'image/jpg')
+themind.photo.attach(io: themindPicture, filename: 'themind.jpg', content_type: 'image/jpg')
+timebomb.photo.attach(io: timebombPicture, filename: 'timebomb.jpg', content_type: 'image/jpg')
+colt.photo.attach(io: coltPicture, filename: 'colt.jpg', content_type: 'image/jpg')
 
 puts "------Creating Bookings------"
 

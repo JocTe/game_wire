@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Bonjour <%= @user.username %></h1>
+
+  <div class="user-games mt-3">
+      <h2>Vos Jeux----------</h2>
+      <div class="row row-cols-3 mt-3">
+          <% @user.games.each do |game| %>
+            <div class="col">
+              <div class="card h-100">
+                <img src='<%= cl_image_path(game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >
+                <div class="card-body">
+                  <h5 class="card-title"><%= game.name %></h5>
+                  <p class="card-text"><%= game.description.truncate(200) %></p>
+                  <%= link_to "Découvrir", game_path(game), class: "btn btn-primary" %>
+                  <%= link_to "Supprimer", game_path(game), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
+  </div>
+
+  <div class="user-bookings mt-3">
+      <h2>Vos location----------</h2>
+      <div class="row row-cols-3 mt-3">
+          <% @user.bookings.each do |booking| %>
+            <div class="col">
+              <div class="card h-100">
+                <img src='<%= cl_image_path(booking.game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >
+                <div class="card-body">
+                  <h5 class="card-title"><%= booking.game.name %></h5>
+                  <p class="card-text"><%= booking.game.description.truncate(200) %></p>
+                  <%= link_to "Découvrir", game_path(booking.game), class: "btn btn-primary" %>
+                  <%= link_to "Annuler", game_booking_path(game_id: booking.game, id: booking), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-danger" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
+  </div>
+</div>

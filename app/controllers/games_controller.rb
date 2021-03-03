@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
@@ -16,6 +18,9 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.user = current_user
+    if !@game.photo.attached?
+      default_image(@game)
+    end
     if @game.save
       redirect_to game_path(@game)
     else
@@ -39,7 +44,7 @@ class GamesController < ApplicationController
   def destroy
     @game = Game.find(params[:id])
     @game.destroy
-    redirect_to games_path(@game) # redirect to ?
+    redirect_to profile_path # redirect to ?
   end
 
   private
@@ -47,4 +52,10 @@ class GamesController < ApplicationController
   def game_params    
     params.require(:game).permit(:name, :description, :photo)
   end
+
+  def default_image(game)
+    file = URI.open('https://images.unsplash.com/photo-1578377375762-cbcc98d68af0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')
+    game.photo.attach(io: file, filename: 'default.jpg', content_type: 'image/jpg')
+  end
+  
 end
