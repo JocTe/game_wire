@@ -9,6 +9,26 @@
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "email" }%>
+      <%= f.input :last_name,
+                  label: 'Nom',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "last_name" }%>
+      <%= f.input :first_name,
+                  label: 'Prénom',
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "first_name" }%>
+      <%= f.input :username,
+                  label: "Nom d'utilisateur",
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "username" }%>
+      <%= f.input :address,
+                  label: "Adresse",
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "address" }%>
       <%= f.input :password,
                   required: true,
                   label: 'Mot de passe',
