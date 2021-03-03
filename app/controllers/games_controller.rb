@@ -3,8 +3,8 @@ require 'open-uri'
 class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
   before_action :set_game, only: [ :show, :edit, :update, :destroy ]
+
   def index
-    @games = Game.all
     @games = policy_scope(Game)
   end
   

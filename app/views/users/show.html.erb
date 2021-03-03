@@ -21,6 +21,7 @@
 
   <div class="user-bookings mt-3">
       <h2>Vos locations actuelles</h2>
+      
       <div class="row row-cols-3 mt-3">
           <% @user.bookings.each do |booking| %>
             <div class="col">
@@ -28,15 +29,41 @@
                 <img src='<%= cl_image_path(booking.game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >
                 <div class="card-body">
                   <h5 class="card-title"><%= booking.game.name %></h5>
+                  <p>state : <%= booking.state %></p>
+                  <p>owner : <%= booking.game.user.username %></p>
                   <p class="card-text"><%= booking.game.description.truncate(200) %></p>
                   <%= link_to "Découvrir", game_path(booking.game), class: "btn btn-primary" %>
                   <%= link_to "Annuler", game_booking_path(game_id: booking.game, id: booking), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-danger" %>
-                  <%= link_to "Cancel", decline_booking_path(id: booking), method: "PATCH", class: "btn btn-danger" %>
-
+                  <%= link_to "Accepter", accept_booking_path(id: booking), method: "PATCH", class: "btn btn-success" %>
+                  <%= link_to "Refuser", decline_booking_path(id: booking), method: "PATCH", class: "btn btn-warning" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
+       <div class="user-bookings mt-3">
+      <h2>Vos jeux que vous prêter</h2>
+      
+      <div class="row row-cols-3 mt-3">
+          <% @user.bookings_as_owner.each do |booking| %>
+            <div class="col">
+              <div class="card h-100">
+                <img src='<%= cl_image_path(booking.game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >
+                <div class="card-body">
+                  <h5 class="card-title"><%= booking.game.name %></h5>
+                  <p>state : <%= booking.state %></p>
+                  <p>owner : <%= booking.game.user.username %></p>
+                  <p class="card-text"><%= booking.game.description.truncate(200) %></p>
+                  <%= link_to "Découvrir", game_path(booking.game), class: "btn btn-primary" %>
+                  <%= link_to "Annuler", game_booking_path(game_id: booking.game, id: booking), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-danger" %>
+                  <%= link_to "Accepter", accept_booking_path(id: booking), method: "PATCH", class: "btn btn-success" %>
+                  <%= link_to "Refuser", decline_booking_path(id: booking), method: "PATCH", class: "btn btn-warning" %>
                 </div>
               </div>
             </div>
           <% end %>
       </div>
   </div>
+
+  
 </div>

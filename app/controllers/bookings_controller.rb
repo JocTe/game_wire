@@ -29,10 +29,12 @@ class BookingsController < ApplicationController
 
   def accept
     @booking.update(state: "Accepté")
+    redirect_to profile_path
   end
 
   def decline
     @booking.update(state: "Refusé")
+    redirect_to profile_path
   end
 
   private
