@@ -34,15 +34,13 @@ coltPicture = URI.open('https://www.espritjeu.com/upload/image/colt-express-p-im
 
 puts "------Creating Games------"
 
-wazabi = Game.create!(name: "Wazabi", description: "Un seul objectif : vous débarrasser de vos dés ! Des cartes vont vous y aider, mais pour les utiliser il vous faudra obtenir les bonnes figures avec les dés.", user: jo)
-bang = Game.create!(name: "Bang", description: "BANG! recrée les fusillades des westerns spaghettis et fait s’affronter un groupe de Hors-la-loi et un Shérif. Les Adjoints tentent d’aider le Shérif incognito, mais il existe aussi un Renégat qui poursuit ses propres objectifs !", user: jo)
-degoblinade = Game.create!(name: "Degoblinade", description: "Dégoblinade est un jeu de cartes et de dés vous permettant de lever une armée de gobelins pour anéantir les clans adverses. Attaquez vos opposants, défendez votre peau, pactisez avec l'ennemi, trahissez vos alliés : Tous les coups sont permis pour devenir le Roi des gobelins!", user: morgane)
-codenames = Game.create!(name: "Codenames", description: "Codenames est un jeu d’association d’idées dans lequel les joueurs, répartis en deux équipes, devront tour à tour faire deviner à leurs coéquipiers un ensemble de mots qui leur sont attribués. Une seule règle : faire deviner avec un seul indice et un chiffre correspondant au nombre de mots à trouver. Prenez donc garde de ne pas découvrir les mots de vos concurrents ou pire … le mot Piège.", user: jo)
-themind = Game.create!(name: "The name" , description: "Les joueurs doivent poser leurs cartes par ordre croissant au centre de la table. Il n’y a pas d’ordre de jeu : qui pense avoir la plus petite carte la pose en premier et ainsi de suite. On ne peut ni parler, ni se faire des signes, ni communiquer d’aucune manière ! Et pourtant, le succès est possible.", user: morgane)
-timebomb = Game.create!(name: "Time Bomb", description: "Moriarty a caché une bombe dans la plus célèbre tour de Londres. Lui et son équipe cherchent à la faire exploser et Scherlock et ses amis font tout pour contrecarrer ce plan.", user: alexis)
-colt = Game.create!(name:"Colt Express", description: "L’esprit des grands westerns dans un jeu de programmation original et subtil. Des cartes événement révélées au début de chaque manche introduisant nouvelles règles ou changements de situation.", user: alexis)
-
-
+wazabi = Game.create!(name: "Wazabi", price:6, number_of_players:8, duration:"2000-01-01 00:45:00", description: "Un seul objectif : vous débarrasser de vos dés ! Des cartes vont vous y aider, mais pour les utiliser il vous faudra obtenir les bonnes figures avec les dés.", user: jo)
+bang = Game.create!(name: "Bang", price:10, number_of_players:4, duration:"2000-01-01 00:30:00", description: "BANG! recrée les fusillades des westerns spaghettis et fait s’affronter un groupe de Hors-la-loi et un Shérif. Les Adjoints tentent d’aider le Shérif incognito, mais il existe aussi un Renégat qui poursuit ses propres objectifs !", user: jo)
+degoblinade = Game.create!(name: "Degoblinade", price:7, number_of_players:6, duration:"2000-01-01 00:40:00", description: "Dégoblinade est un jeu de cartes et de dés vous permettant de lever une armée de gobelins pour anéantir les clans adverses. Attaquez vos opposants, défendez votre peau, pactisez avec l'ennemi, trahissez vos alliés : Tous les coups sont permis pour devenir le Roi des gobelins!", user: morgane)
+codenames = Game.create!(name: "Codenames", price:5, number_of_players:10, duration:"2000-01-01 00:35:00", description: "Codenames est un jeu d’association d’idées dans lequel les joueurs, répartis en deux équipes, devront tour à tour faire deviner à leurs coéquipiers un ensemble de mots qui leur sont attribués. Une seule règle : faire deviner avec un seul indice et un chiffre correspondant au nombre de mots à trouver. Prenez donc garde de ne pas découvrir les mots de vos concurrents ou pire … le mot Piège.", user: jo)
+themind = Game.create!(name: "The name" , price:2, number_of_players:4, duration:"2000-01-01 00:20:00", description: "Les joueurs doivent poser leurs cartes par ordre croissant au centre de la table. Il n’y a pas d’ordre de jeu : qui pense avoir la plus petite carte la pose en premier et ainsi de suite. On ne peut ni parler, ni se faire des signes, ni communiquer d’aucune manière ! Et pourtant, le succès est possible.", user: morgane)
+timebomb = Game.create!(name: "Time Bomb", price:10, number_of_players:8, duration:"2000-01-01 00:35:00", description: "Moriarty a caché une bombe dans la plus célèbre tour de Londres. Lui et son équipe cherchent à la faire exploser et Scherlock et ses amis font tout pour contrecarrer ce plan.", user: alexis)
+colt = Game.create!(name:"Colt Express", price:5, number_of_players:6, duration:"2000-01-01 00:35:00", description: "L’esprit des grands westerns dans un jeu de programmation original et subtil. Des cartes événement révélées au début de chaque manche introduisant nouvelles règles ou changements de situation.", user: alexis)
 
 wazabi.photo.attach(io: wazabiPicture, filename: 'wazabi.jpg', content_type: 'image/jpg')
 bang.photo.attach(io: bangPicture, filename: 'bang.jpg', content_type: 'image/jpg')
@@ -59,8 +57,4 @@ Booking.create!(user: jo, game:themind, start_at: Date.new(2021,03,07), end_at: 
 Booking.create!(user: alexis, game:degoblinade, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"pending")
 Booking.create!(user: morgane, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"refused")
 
-
-
-
 puts "------Done------"
-
