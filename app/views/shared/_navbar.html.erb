@@ -1,6 +1,6 @@
 <div class="navbar sticky-top navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <p class="m-0">Game-wire</p>
+    <p class="m-0">GameWire</p>
     <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,23 +11,24 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Profil", profile_path, class: "nav-link" %>
-        </li>
         <li class="nav-item">
+        <li class="nav-item">
+          <%= link_to "Jeux", games_path, class: "nav-link" %>
+        </li>
           <%= link_to "Ajouter un jeu", new_game_path, class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown">      
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+             <%= link_to "Profil", profile_path, class: "dropdown-item" %>
             <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          <%= link_to "Profil", profile_path, class: "nav-link" %>
+          <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
         </li>
+
       <% end %>
     </ul>
   </div>

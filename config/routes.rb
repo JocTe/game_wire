@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   # resources :bookings, only: [:destroy]
 
-  get "/mygames", to: "users#games"
+  # get "/mygames", to: "users#games"
   get "/profile", to: "users#show"
-  get "/bookings", to: "users#index"
+  # get "/bookings", to: "users#index"
 
   # TO DO LATER
   # patch "/accept", to: "bookings#accept"

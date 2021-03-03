@@ -5,14 +5,16 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create    
     @booking = Booking.new(booking_params) 
     @booking.user = @user
     @booking.game = @game
+    authorize @booking
     if @booking.save
-      redirect_to bookings_path
+      redirect_to profile_path
     else
       render :new
     end
@@ -20,6 +22,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.destroy
     redirect_to profile_path
   end
