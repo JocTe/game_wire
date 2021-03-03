@@ -8,7 +8,8 @@ class GamesController < ApplicationController
     @games = policy_scope(Game)
   end
   
-  def show
+  def show    
+    @booking = Booking.new
   end
 
   def new
