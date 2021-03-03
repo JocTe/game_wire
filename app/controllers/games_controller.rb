@@ -2,22 +2,24 @@ require 'open-uri'
 
 class GamesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-
+  before_action :set_game, only: [ :show, :edit, :update, :destroy ]
   def index
     @games = Game.all
+    @games = policy_scope(Game)
   end
   
   def show
-    @game = Game.find(params[:id])
   end
 
   def new
     @game = Game.new
+    authorize @game
   end
 
   def create
     @game = Game.new(game_params)
     @game.user = current_user
+    authorize @game
     if !@game.photo.attached?
       default_image(@game)
     end
@@ -29,11 +31,9 @@ class GamesController < ApplicationController
   end
 
   def edit
-    @game = Game.find(params[:id])
   end
 
   def update
-    @game = Game.find(params[:id])
     if @game.update(game_params)
       redirect_to game_path(@game), notice: 'Le jeu a bien été édité'
     else
@@ -42,12 +42,16 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
     @game.destroy
     redirect_to profile_path # redirect to ?
   end
 
   private
+
+  def set_game
+    @game = Game.find(params[:id])
+    authorize @game
+  end
 
   def game_params    
     params.require(:game).permit(:name, :description, :photo)
