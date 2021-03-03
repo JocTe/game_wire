@@ -2,7 +2,7 @@
   <h1> Editer <%= @game.name %></h1>
   <%= simple_form_for @game do |f| %>
   <%= f.input :name, label: 'Nom' %>
-    <%= f.input :description, label: 'Description' %>
+  <%= f.input :description, label: 'Description' %>
   <%= f.input :price, label: 'Prix' %>
   <%= f.input :duration, label: 'Durée' %>
   <%= f.input :number_of_players, label: 'Nombre de joueurs' %>
