@@ -27,6 +27,14 @@ class BookingsController < ApplicationController
     redirect_to profile_path
   end
 
+  def accept
+    
+  end
+
+  def decline
+
+  end
+
   private
 
   def booking_params
