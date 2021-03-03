@@ -22,7 +22,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def accept?
-    user == record.user
+    user == record.game.user
   end
 
   def decline?
