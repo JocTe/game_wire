@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_183839) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "price"
+    t.float "price"
     t.time "duration"
     t.integer "number_of_players"
     t.index ["user_id"], name: "index_games_on_user_id"
