@@ -1,8 +1,7 @@
 <div class="container">
-    <h1>Bonjour <%= @user.username %></h1>
-
+  <h1>Bonjour <%= @user.username %></h1>
   <div class="user-games mt-3">
-      <h2>Vos Jeux----------</h2>
+      <h2>Vos jeux proposés à la location</h2>
       <div class="row row-cols-3 mt-3">
           <% @user.games.each do |game| %>
             <div class="col">
@@ -11,7 +10,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= game.name %></h5>
                   <p class="card-text"><%= game.description.truncate(200) %></p>
-                  <%= link_to "Découvrir", game_path(game), class: "btn btn-primary" %>
+                  <%= link_to "Éditer", game_path(game), class: "btn btn-primary" %>
                   <%= link_to "Supprimer", game_path(game), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-danger" %>
                 </div>
               </div>
@@ -21,7 +20,7 @@
   </div>
 
   <div class="user-bookings mt-3">
-      <h2>Vos location----------</h2>
+      <h2>Vos locations actuelles</h2>
       <div class="row row-cols-3 mt-3">
           <% @user.bookings.each do |booking| %>
             <div class="col">
