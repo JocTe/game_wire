@@ -17,12 +17,16 @@
       <h3 class="mb-2">Description</h3>
       <p class="mb-4"> <%= @game.description %></p>
     </div>
-    <div class="bg-white rounded p-4">
+    <div class="bg-white rounded p-4 ml-3 booking-card">
       <div class="d-flex mb-2 justify-content-center">
         <h5 class="mb-0 font-weight-bold">5€</h5>
         <p class="mb-0 font-weight-light">/24h</p>
       </div>
-      <%= link_to "Réserver", new_game_booking_path(@game), class: "btn btn-primary" %>
+      <%= simple_form_for [@game, @booking ] do |f| %>
+        <%= f.input :start_at, as: :string, label: "Louer du :", input_html: {id: "range_start"} %>
+        <%= f.input :end_at, as: :string, label: "au :", input_html: {id: "range_end"} %>
+        <%= f.submit "Réserver", class: "btn btn-primary btn-lg btn-block" %>
+      <% end %>      
     </div>
   </div>
 
