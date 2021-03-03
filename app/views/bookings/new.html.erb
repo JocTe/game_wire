@@ -1,7 +1,7 @@
 <p><%= current_user.username %></p>
 <p><%= @game.name %></p>
 <%= simple_form_for [@game, @booking ] do |f| %>
-<%= f.input :start_at, label: "Starting date" %>
-<%= f.input :end_at, label: "Ending at" %>
-<%= f.button :submit, label: "text" %>
+<%= f.input :start_at, as: :string, label: "louer du:", input_html: {id: "range_start"} %>
+<%= f.input :end_at, as: :string, label: "au:", input_html: {id: "range_end"} %>
+<%= f.button :submit, label: "Réserver" %>
 <% end %>
