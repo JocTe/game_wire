@@ -1,6 +1,6 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+  justify-content: space-between;  
+  background: $my-blue;  
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,23 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.nav-link-white {
+  color: $my-white;
+  opacity: 0.9;
+  padding-right: 16px;
+  &:hover{
+    color: $my-white;
+    opacity: 1;
+    text-decoration: none;
+  }
+}
+
+.align-vertically {
+  align-items: center;
+}
+
+#brand {
+  opacity: 1;
 }
