@@ -6,34 +6,89 @@
 
 .request-card {
   display: flex;
-  background-color: $my-ligth-orange;
-
-  max-width: 100%;
+  background-color: white;
+  box-shadow: 1px 1px 3px $my-green;
+  
   border-radius: 10px;
   margin: 20px;
   overflow: hidden;
+  transform: scale(0.98,0.98);
+  transition: all 0.2s ease-in-out;
+
+  .request-card-user {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
 
   .request-card-image {
     background-size: cover;
-    padding: 30px;
+    margin-right: 5px;
+    background-position: center;
+    background-size: 140%;
+    
    
     width: 250px;
     font-weight: bold;
-    h6 {
-      margin: 0;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+    transition: all 0.2s ease-in-out;
+   
+
   }
   .request-card-info {
     position: relative;
     padding: 30px;
     width: 100%;
+    h6 {
+      margin: 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    h2 {
+      text-transform: uppercase;
+      margin: 0;
+      text-align: left;
+    }
+    .game-name-link {
+      position: relative;
+      text-decoration: none;
+      margin: 5px 0px;
+      color: $my-blue;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 0px;
+        height: 100%;
+        background: $my-ligth-orange;
+        transition: all .2s;
+        z-index: -1;
+      }
+
+      &:hover:before {
+        width: 100%;
+      }
+    }
+    .request-card-buttons {
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      right: 30px;
+      bottom: 30px;
+      color: $my-white;
+      a:hover {
+        transform: scale(1.1);
+      }
+    }
   }
-  .request-buttons {
-    display: flex;
-    justify-content: flex-end;
-    
+  &:hover {
+    transform: scale(1);
+    .request-card-image {
+      background-size: 100%;
+      
+    }
   }
+  
   
 }
