@@ -6,7 +6,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    user != record.game.user
   end
 
   def show?
