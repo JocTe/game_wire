@@ -10,7 +10,7 @@
       <p class="mb-0 pl-2"><%= @game.duration.hour %> h <%= @game.duration.min %> min.</p>
     </div>
   </div>
-  <%= cl_image_tag(@game.photo.key, :class => "image-full-width mb-4") %>
+  <%= image_tag(@game.photo.attached? ?  cl_image_path(@game.photo.key) : image_path("game_default_picture.jpg"), class: "image-full-width mb-4") %>
 
   <div class="d-flex justify-content-between">
     <div>
