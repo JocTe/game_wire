@@ -27,9 +27,9 @@
 
   <div class="cards">
     <% @games.last(6).each do |game| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path game.photo.key, crop: :fill %>')">
-      <%= link_to game.name, game_path(game)  %>
-    </div>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= game.photo.attached? ?  cl_image_path(game.photo.key, crop: :fill) : image_path('game_default_picture.jpg', crop: :fill) %>')">g
+        <%= link_to game.name, game_path(game) %>
+      </div>
     <% end %>
     </div>
 </div>

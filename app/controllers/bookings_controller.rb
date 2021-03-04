@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
   def create    
     @booking = Booking.new(booking_params) 
     @booking.user = @user
-    @booking.game = @game
+    @booking.game = @game    
     authorize @booking
     if @booking.save
       redirect_to profile_path
