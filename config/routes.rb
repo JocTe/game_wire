@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # resources :bookings, only: [:destroy]
 
   # get "/mygames", to: "users#games"
-  get "/profile", to: "users#show"
+  get "/profile", to: "pages#show"
   # get "/bookings", to: "users#index"
   resources :bookings do
     member do
