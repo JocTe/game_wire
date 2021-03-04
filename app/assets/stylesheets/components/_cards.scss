@@ -1,3 +1,22 @@
 .booking-card {
   width: 600px;
 }
+
+
+.request-card {
+  position: relative;
+  background-color: $primary;
+  width: 100%;
+  padding: 15px;
+
+  border: 1px solid black;
+
+  img {
+    position: absolute;
+    left: -30px;
+  }
+  .request-content {
+    display: flex;
+    justify-content: space-between;
+  }
+}
