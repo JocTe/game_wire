@@ -3,17 +3,32 @@
 }
 
 
-.request-card {
-  position: relative;
-  background-color: white;
-  width: 100%;
-  padding: 15px;
-  align-items: center;
-  border: 1px solid black;
 
-  img {
-    position: absolute;
-    left: -30px;
+.request-card {
+  display: flex;
+  background-color: $my-ligth-orange;
+
+  max-width: 100%;
+  border-radius: 10px;
+  margin: 20px;
+  overflow: hidden;
+
+  .request-card-image {
+    background-size: cover;
+    padding: 30px;
+   
+    width: 250px;
+    font-weight: bold;
+    h6 {
+      margin: 0;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+  .request-card-info {
+    position: relative;
+    padding: 30px;
+    width: 100%;
   }
   .request-buttons {
     display: flex;
