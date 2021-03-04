@@ -39,7 +39,6 @@
                   <p class="card-text"><%= booking.game.description.truncate(200) %></p>
                   <%= link_to "Découvrir", game_path(booking.game), class: "btn btn-primary" %>
                   <button id="sweet-alert-delete" class="btn btn-danger">Annuler</button> 
-
                   <%= link_to "", game_booking_path(game_id: booking.game, id: booking), method: "DELETE", class: "hidden", id: "delete-link" %>
                 </div>
               </div>
