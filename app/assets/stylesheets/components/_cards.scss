@@ -5,18 +5,20 @@
 
 .request-card {
   position: relative;
-  background-color: $primary;
+  background-color: white;
   width: 100%;
   padding: 15px;
-
+  align-items: center;
   border: 1px solid black;
 
   img {
     position: absolute;
     left: -30px;
   }
-  .request-content {
+  .request-buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    
   }
+  
 }
