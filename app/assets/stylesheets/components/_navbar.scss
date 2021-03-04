@@ -13,17 +13,13 @@
 
 .nav-link-white {
   color: $my-white;
-  opacity: 0.9;
+  opacity: 0.8;
   padding-right: 16px;
   &:hover{
     color: $my-white;
     opacity: 1;
     text-decoration: none;
   }
-}
-
-.align-vertically {
-  align-items: center;
 }
 
 #brand {
