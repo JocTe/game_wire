@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 
 import { initFlatpickr } from "../plugins/flatpickr";
+import { initSweetalert } from '../plugins/sweetalert';
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,6 +22,16 @@ import { initFlatpickr } from "../plugins/flatpickr";
 document.addEventListener('turbolinks:load', () => {
     // Call your JS functions here
     initFlatpickr();
+    initSweetalert('#sweet-alert-delete', {
+        title: "Êtes-vous sûr?",
+        text: "Cette action est irréversible",
+        icon: "warning"
+    }, (value) => {
+        if (value) {
+            const link = document.querySelector('#delete-link');
+            link.click();
+        }
+    });
 });
 
 
