@@ -6,7 +6,7 @@
           <% @user.games.each do |game| %>
             <div class="col">
               <div class="card h-100">
-                <img src='<%= cl_image_path(game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >
+                <%= image_tag(game.photo.attached? ?  cl_image_path(game.photo.key) : image_path("game_default_picture.jpg"), class: "card-img-top image-sizing") %>
                 <div class="card-body">
                   <h5 class="card-title"><%= game.name %></h5>
                   <p class="card-text"><%= game.description.truncate(200) %></p>
@@ -63,3 +63,4 @@
         <% end %>
       <% end %>
 </div>
+
