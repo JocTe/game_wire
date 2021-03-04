@@ -6,7 +6,7 @@
           <% @user.games.each do |game| %>
             <div class="col">
               <div class="card h-100">
-                <img src='<%= cl_image_path(game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >
+                <%= image_tag(game.photo.attached? ?  cl_image_path(game.photo.key) : image_path("game_default_picture.jpg"), class: "card-img-top image-sizing") %>
                 <div class="card-body">
                   <h5 class="card-title"><%= game.name %></h5>
                   <p class="card-text"><%= game.description.truncate(200) %></p>
@@ -21,6 +21,12 @@
 
   <div class="user-bookings mt-3">
       <h2>Vos locations actuelles</h2>
+      <% @user.games.each do |game| %>
+        <% game.bookings.each do |booking| %>
+          <%= booking.game.name %>
+          <%= booking.user.username %>
+        <% end %>
+      <% end %>
       <div class="row row-cols-3 mt-3">
           <% @user.bookings.each do |booking| %>
             <div class="col">
@@ -28,6 +34,8 @@
                 <img src='<%= cl_image_path(booking.game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >
                 <div class="card-body">
                   <h5 class="card-title"><%= booking.game.name %></h5>
+                  <p>state : <%= booking.state %></p>
+                  <p>owner : <%= booking.game.user.username %></p>
                   <p class="card-text"><%= booking.game.description.truncate(200) %></p>
                   <%= link_to "Découvrir", game_path(booking.game), class: "btn btn-primary" %>
                   <%= link_to "Annuler", game_booking_path(game_id: booking.game, id: booking), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-danger" %>
@@ -36,5 +44,23 @@
             </div>
           <% end %>
       </div>
-  </div>
+      <h2>Vos requêtes</h2>
+      <% @user.games.each do |game| %>
+        <% game.bookings.each do |booking| %>
+            <div class="row mt-2 request-card">
+                <div class="col-6">
+                  <h3><%= booking.user.username  %> souhaite louer.. </h3>
+                  <p><%= booking.game.name %> du <%= booking.start_at %>  au <%= booking.end_at %></p>
+                </div>
+                <div class="col-2">
+                  <h5><%= booking.state %></h5>
+                </div>
+                 <div class="col-4 request-buttons">
+                  <%= link_to "<i class='fas fa-check'></i>".html_safe, accept_booking_path(id: booking), method: "PATCH" , class: "btn btn-success"%>
+                  <%= link_to "<i class='fas fa-times'></i>".html_safe, decline_booking_path(id: booking), method: "PATCH", class: "btn btn-warning" %>
+                </div>
+            </div>
+        <% end %>
+      <% end %>
 </div>
+

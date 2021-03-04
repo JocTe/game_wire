@@ -13,5 +13,6 @@ class UsersController < ApplicationController
     @user = current_user
     @games = policy_scope(Game)
     authorize @games
+    
   end
 end
