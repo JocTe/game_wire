@@ -11,8 +11,10 @@ Rails.application.routes.draw do
   # get "/mygames", to: "users#games"
   get "/profile", to: "users#show"
   # get "/bookings", to: "users#index"
-
-  # TO DO LATER
-  # patch "/accept", to: "bookings#accept"
-  # patch "/decline", to: "bookings#decline"
+  resources :bookings do
+    member do
+      patch "/accept", to: "bookings#accept"
+      patch "/decline", to: "bookings#decline"
+    end
+  end
 end

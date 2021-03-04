@@ -52,9 +52,9 @@ colt.photo.attach(io: coltPicture, filename: 'colt.jpg', content_type: 'image/jp
 
 puts "------Creating Bookings------"
 
-Booking.create!(user: jo, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"pending")
-Booking.create!(user: jo, game:themind, start_at: Date.new(2021,03,07), end_at: Date.new(2021,04,07), state:"accepted")
-Booking.create!(user: alexis, game:degoblinade, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"pending")
-Booking.create!(user: morgane, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"refused")
+Booking.create!(user: jo, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"accepté")
+Booking.create!(user: jo, game:themind, start_at: Date.new(2021,03,07), end_at: Date.new(2021,04,07), state:"accepté")
+Booking.create!(user: alexis, game:degoblinade, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"en attente")
+Booking.create!(user: morgane, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"refusé")
 
 puts "------Done------"
