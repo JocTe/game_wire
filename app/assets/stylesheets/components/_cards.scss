@@ -31,8 +31,12 @@
     width: 250px;
     font-weight: bold;
     transition: all 0.2s ease-in-out;
-   
 
+  a {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+  }
   }
   .request-card-info {
     position: relative;
@@ -86,9 +90,6 @@
     transform: scale(1);
     .request-card-image {
       background-size: 100%;
-      
     }
-  }
-  
-  
+  }  
 }
