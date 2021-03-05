@@ -1,8 +1,10 @@
 <div class="container">
-  <h1 class="mt-5">Bonjour <%= @user.username %></h1>
+  <div class="profile-card">
+    <h1 class="mt-5">Bonjour <%= @user.username %></h1>
+   
+  </div>
 
   <section class="user-games">
-
       <details open>
         <summary><h2 class="title-line text-left" ><span><i class="fas fa-chevron-down"></i> </span><span>Vos jeux proposés à la location</span></h2></summary>
         <div class="row row-cols-3">
@@ -23,7 +25,6 @@
       <% end %>
     </details>
   </section>
-
   <section>
     <details>
       <summary><h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span> <span>Vos requêtes</span></h2></summary>
