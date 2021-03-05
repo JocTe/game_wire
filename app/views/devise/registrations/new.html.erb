@@ -1,52 +1,64 @@
 <div class="container">
-  <h2>Créer un compte</h2>
-
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :last_name,
-                  label: 'Nom',
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "last_name" }%>
-      <%= f.input :first_name,
-                  label: 'Prénom',
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "first_name" }%>
-      <%= f.input :username,
-                  label: "Nom d'utilisateur",
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "username" }%>
-      <%= f.input :address,
-                  label: "Adresse",
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "address" }%>
-      <%= f.input :password,
-                  required: true,
-                  label: 'Mot de passe',
-                  hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  label: 'Confirmation du mot de passe',
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :photo,
-                  label: 'Photo de profil',
-                  as: :file %>
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <div class="form-login">
+        <h2>Créer votre compte</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      placeholder: 'favot@lewagon.fr',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :last_name,
+                      placeholder: 'La Taupe',
+                      label: 'Nom',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "last_name" }%>
+          <%= f.input :first_name,
+                      label: 'Prénom',
+                      placeholder: 'Favot',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "first_name" }%>
+          <%= f.input :username,
+                      placeholder: 'Favot59',
+                      label: "Nom d'utilisateur",
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "username" }%>
+          <%= f.input :address,
+                      label: "Adresse",
+                      placeholder: '2 avenue des saules 59160 lille',
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "address" }%>
+          <%= f.input :password,
+                      placeholder: '······',
+                      required: true,
+                      label: 'Mot de passe',
+                      hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      placeholder: '······',
+                      label: 'Confirmation du mot de passe',
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :photo,
+                      input_html: { class: 'hidden', id: 'photo-input' },
+                      label_html: { class: 'upload-photo'},
+                      label: '📷 Télécharger une photo' %>
+          <div class="add-photo">
+            <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Créer mon compte", class: "btn btn-primary" %>
+        </div>
+        <% end %>
+      </div>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Créer mon compte", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-    <br>
-  <%= render "devise/shared/links" %>
+  </div>
 </div>
