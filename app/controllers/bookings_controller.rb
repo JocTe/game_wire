@@ -14,12 +14,12 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.game = @game
     @booking.state = "En attente..."
-    
+
     authorize @booking
     if @booking.save
       redirect_to profile_path
     else
-      render :new
+      redirect_to game_path(@game)
     end
   end
 
