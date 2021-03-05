@@ -1,10 +1,29 @@
 .footer {
+  background: $my-blue;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0px 50px;
   margin-top: 4em;
-
-  .row-sm {
-    margin-left: 1em;
-    justify-content: space-around;
-  }
+  color: white;
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.footer-links a {
+  color: white;
+  opacity: 0.50;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+.footer-links a:hover {
+  opacity: 1;
+  color: $my-orange;
+}
+.footer .fa-heart {
+  color: $my-orange;
 }
