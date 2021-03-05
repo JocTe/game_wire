@@ -1,25 +1,46 @@
-<div class="request-card">
-    <div class="request-card-image" style="background-image: url('<%= game.photo.attached? ?  cl_image_path(game.photo.key, crop: :fill) : image_path('game_default_picture.jpg', crop: :fill) %>')">
-        <%= link_to "", game_path(booking.game)  %>
-    </div>
-
-    <div class="request-card-info">
-        <div class="request-card-user">
-            <h6>Statut</h6>
-            <h5><%= booking.state %></h5>
+<% unless owner %>
+    <div class="request-card">
+        <div class="request-card-image" style="background-image: url('<%= game.photo.attached? ?  cl_image_path(game.photo.key, crop: :fill) : image_path('game_default_picture.jpg', crop: :fill) %>')">
+            <%= link_to "", game_path(booking.game)  %>
         </div>
 
-       
-
-        <h2><%= link_to "#{booking.game.name}",  game_path(booking.game), class: "game-name-link"%></h2>
-        <p><%= booking.start_at %>  au <%= booking.end_at %></p>
-        <p><%= booking.user.username %> veut louer votre jeu</p>
-    
-        <div class="request-card-buttons">
-            <%= link_to "<i class='fas fa-check'></i>".html_safe, accept_booking_path(id: booking), method: "PATCH" , class: "btn btn-success"%>
-            <%= link_to "<i class='fas fa-times'></i>".html_safe, decline_booking_path(id: booking), method: "PATCH", class: "btn btn-warning" %>
+        <div class="request-card-info">
+            <div class="request-card-user">
+                <h6>Statut</h6>
+                <h5><%= booking.state %></h5>
+            </div>
+            <h2><%= link_to "#{booking.game.name}",  game_path(booking.game), class: "game-name-link"%></h2>
+            <p><%= booking.start_at %>  au <%= booking.end_at %></p>
+            <p><span class="font-weight-bold"><%= booking.user.username %></span> veut louer votre jeu</p>
+        
+            <div class="request-card-buttons">
+            <% if booking.state == "En attente..." %>
+                <%= link_to "<i class='fas fa-check'></i>".html_safe, accept_booking_path(id: booking), method: "PATCH" , class: "btn btn-success"%>
+                <%= link_to "<i class='fas fa-times'></i>".html_safe, decline_booking_path(id: booking), method: "PATCH", class: "btn btn-warning" %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+<% else %>
+    <div class="request-card">
+        <div class="request-card-image" style="background-image: url('<%= game.photo.attached? ?  cl_image_path(game.photo.key, crop: :fill) : image_path('game_default_picture.jpg', crop: :fill) %>')">
+            <%= link_to "", game_path(booking.game)  %>
         </div>
 
+        <div class="request-card-info">
+            <div class="request-card-user">
+                <h6>Statut</h6>
+                <h5><%= booking.state %></h5>
+            </div>
+            <h2><%= link_to "#{booking.game.name}",  game_path(booking.game), class: "game-name-link"%></h2>
+            <p><%= booking.start_at %>  au <%= booking.end_at %></p>
+            <p>vous avez fait une requête à <span class="font-weight-bold"><%= game.user.username %></span> pour louer son jeu </p>
+        
+            <div class="request-card-buttons">
+            <% if booking.state == "En attente..." %>
+                <%= link_to "<i class='fas fa-times'></i>".html_safe,  game_booking_path(game_id: booking.game, id: booking), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-warning" %>
+            <% end %>
+            </div>
+        </div>
     </div>
-    
-</div>
+<% end %>
