@@ -1,0 +1,25 @@
+<div class="request-card">
+    <div class="request-card-image" style="background-image: url('<%= game.photo.attached? ?  cl_image_path(game.photo.key, crop: :fill) : image_path('game_default_picture.jpg', crop: :fill) %>')">
+        <%= link_to "", game_path(booking.game)  %>
+    </div>
+
+    <div class="request-card-info">
+        <div class="request-card-user">
+            <h6>Statut</h6>
+            <h5><%= booking.state %></h5>
+        </div>
+
+       
+
+        <h2><%= link_to "#{booking.game.name}",  game_path(booking.game), class: "game-name-link"%></h2>
+        <p><%= booking.start_at %>  au <%= booking.end_at %></p>
+        <p><%= booking.user.username %> veut louer votre jeu</p>
+    
+        <div class="request-card-buttons">
+            <%= link_to "<i class='fas fa-check'></i>".html_safe, accept_booking_path(id: booking), method: "PATCH" , class: "btn btn-success"%>
+            <%= link_to "<i class='fas fa-times'></i>".html_safe, decline_booking_path(id: booking), method: "PATCH", class: "btn btn-warning" %>
+        </div>
+
+    </div>
+    
+</div>

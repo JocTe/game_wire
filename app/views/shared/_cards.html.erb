@@ -1,0 +1,12 @@
+<div class="col mt-5">
+    <%= link_to game_path(game), class: "card-link" do %>
+        <div class="games-card h-100">            
+            <%= image_tag(game.photo.attached? ?  cl_image_path(game.photo.key) : image_path("game_default_picture.jpg"), class: "card-picture") %>                                
+            <div class="card-body">   
+            <h3 class="text-center mb-2"><%= game.name %></h3>           
+            <p class="card-text"><%= game.description.truncate(200) %></p>
+            </div>
+            <%= link_to "Découvrir", game_path(game), class: "btn btn-secondary btn-large" %>
+        </div>
+    <% end %>
+</div>
