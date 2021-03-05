@@ -1,47 +1,58 @@
 <div class="container">
-  <h2 class="mt-4"><%= @game.name.capitalize %></h2>
-  <div class="d-flex flex-row bd-highlight mb-3">
-    <div class="d-flex align-items-center">
-      <i class="fas fa-user-friends"></i>
-      <p class="mb-0 pl-2"><%= @game.number_of_players %> joueurs</p>
-    </div>
-    <div class="d-flex align-items-center pl-4">
-      <i class="far fa-clock"></i>
-      <p class="mb-0 pl-2"><%= @game.duration.hour %> h <%= @game.duration.min %> min.</p>
-    </div>
-  </div>
-  <%= image_tag(@game.photo.attached? ?  cl_image_path(@game.photo.key) : image_path("game_default_picture.jpg"), class: "image-full-width mb-4") %>
-
-
-  <div class="d-flex justify-content-between">
-    <div>
-      <h3 class="mb-2">Description</h3>
-      <p class="mb-4"> <%= @game.description %></p>
-    </div>
-    <div class="bg-white rounded p-4 ml-3 booking-card">
-      <div class="d-flex mb-2 justify-content-center">
-        <h5 class="mb-0 font-weight-bold"><%= number_with_precision(@game.price, precision: 2) %>€</h5>
-        <p class="mb-0 font-weight-light">/soirée</p>
+  
+  <div class ="card-background-white card-radius">
+      <div class="product-description-inliine mt-4">
+        <div>
+          <%= image_tag(@game.photo.attached? ?  cl_image_path(@game.photo.key) : image_path("game_default_picture.jpg"), class: "image-full-width ") %>
+        </div>
+        <div class="product-infos">
+          <h2 class="mt-4 text-left"><%= @game.name.capitalize %></h2>
+          <div class="d-flex flex-row bd-highlight mb-3">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-user-friends text-primary"></i>
+              <p class="mb-0 pl-2"><%= @game.number_of_players %> joueurs</p>
+            </div>
+            <div class="d-flex align-items-center pl-4">
+              <i class="far fa-clock text-primary"></i>
+              <p class="mb-0 pl-2"><%= @game.duration.hour %> h <%= @game.duration.min %> min.</p>
+            </div>
+          </div>
+          <div class="d-flex my-4 align-items-end">
+              <h4 class="mb-0 font-weight-bold"><%= number_with_precision(@game.price, precision: 2) %>€</h4>
+              <p class="mb-0 font-weight-light pl-2">/soirée</p>
+            </div>
+          <div class="booking-card">
+            <% if !policy(@game).edit? %>          
+              <%= simple_form_for [@game, @booking ] do |f| %>
+                <%= f.input :start_at, as: :string, label: "Louer du :", input_html: {id: "range_start"} %>
+                <%= f.input :end_at, as: :string, label: "au :", input_html: {id: "range_end"} %>
+                <%= f.submit "Réserver", class: "btn btn-primary btn-lg btn-block" %>
+              <% end %>
+            <% else %>
+              <div class="btn-group pt-4" role="group" aria-label="Basic example">    
+                <% if policy(@game).edit? %>
+                    <%= link_to "Editer", edit_game_path(@game), class: "btn btn-primary" %>
+                <% end %>
+                <% if policy(@game).destroy? %>
+                    <%= link_to "Supprimer", game_path(@game), class: "btn btn-primary", method: :delete, data: { confirm: "Supprimer : #{@game.name}" } %>
+                <% end %>
+              </div>
+            <% end %>          
+          </div>      
+        </div>
       </div>
-      <% if !policy(@game).edit? %>
-        <%= simple_form_for [@game, @booking ] do |f| %>
-          <%= f.input :start_at, as: :string, label: "Louer du :", input_html: {id: "range_start"} %>
-          <%= f.input :end_at, as: :string, label: "au :", input_html: {id: "range_end"} %>
-          <%= f.submit "Réserver", class: "btn btn-primary btn-lg btn-block" %>
-        <% end %> 
-      <% end %>     
+
+      <div class="d-flex justify-content-between">
+        <div class="px-4 mt-3">
+          <div class="mb-2 div-full-width border-blue">
+            <h3>Description</h3>
+          </div>
+          <p class="mb-4 mt-3"> <%= @game.description %></p>
+        </div>
+        
+      </div> 
     </div>
   </div>
-
-  <div class="btn-group" role="group" aria-label="Basic example">    
-    <% if policy(@game).edit? %>
-        <%= link_to "Editer", edit_game_path(@game), class: "btn btn-secondary" %>
-    <% end %>
-    <% if policy(@game).destroy? %>
-        <%= link_to "Supprimer", game_path(@game), class: "btn btn-secondary", method: :delete, data: { confirm: "Supprimer : #{@game.name}" } %>
-    <% end %>
-  </div>  
-</div>
 
 <!-- <%= link_to "Back to list", games_path, class: "btn btn-primary" %> à supprimer ?-->
 

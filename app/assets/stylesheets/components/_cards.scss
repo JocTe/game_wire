@@ -1,5 +1,23 @@
 .booking-card {
-  width: 600px;
+  width: 300px;
+}
+
+.card-background-white {
+  background-color: white;
+}
+
+.card-radius {
+  border-radius: 5px;
+}
+
+.div-full-width {
+  width: 100%;  
+}
+
+.border-blue {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgba(51, 51, 72, 0.6)
 }
 
 
@@ -21,4 +39,8 @@
     
   }
   
+}
+
+.product-infos {
+  padding-left: 70px;
 }
