@@ -1,12 +1,22 @@
 <div class="container">
-  <h2>Ajouter un jeu</h2>
-  <%= simple_form_for @game do |f| %>
-    <%= f.input :name, label: 'Nom' %>
-    <%= f.input :description, label: 'Description' %>
-    <%= f.input :number_of_players, label: 'Nombre de joueurs' %>
-    <%= f.input :duration, label: 'Temps pour une partie' %>
-    <%= f.input :price, label: 'Prix pour une soirée de location' %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Ajouter", class: "btn btn-primary" %>
-  <% end %>
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+      <div class="form-login">
+        <h2>Ajouter un jeu</h2>
+        <%= simple_form_for @game do |f| %>
+          <%= f.input :name, label: 'Nom' %>
+          <%= f.input :description, label: 'Description' %>
+          <%= f.input :number_of_players, label: 'Nombre de joueurs' %>
+          <%= f.input :duration, label: 'Temps pour une partie' %>
+          <%= f.input :price, label: 'Prix pour une soirée de location' %>
+          <%= f.input :photo,
+                    input_html: { class: 'd-none' },
+                    label_html: { class: 'upload-photo'},
+                    label: '📷 Télécharger la photo du jeu',
+                    as: :file %>
+          <%= f.submit "Ajouter", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
