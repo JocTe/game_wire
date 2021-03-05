@@ -1,8 +1,9 @@
 <div class="container">
-  <h2 class="text-center my-4">A quoi voulez-vous jouer ?</h2>
+  <h2 class="text-center my-4">Nos jeux disponibles</h2>
 
   <%= render 'shared/searchbar' %>
-
+  <br>
+  <p> <%= @state %> </p>
   <div class="row row-cols-3 mt-3">
       <% @games.each do |game| %>
         <div class="col mt-5">
