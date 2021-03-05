@@ -2,26 +2,36 @@
   <h1 class="mt-5">Bonjour <%= @user.username %></h1>
 
   <section class="user-games">
-      <h2 class="title-line text-left"><span>Vos jeux proposés à la location</span></h2>
-      <div class="row row-cols-3">
-          <% @user.games.each do |game| %>
-            <%= render  "shared/cards", game: game %>
-          <% end %>
-      </div>
+
+      <details open>
+        <summary><h2 class="title-line text-left" ><span><i class="fas fa-chevron-down"></i> </span><span>Vos jeux proposés à la location</span></h2></summary>
+        <div class="row row-cols-3">
+            <% @user.games.each do |game| %>
+              <%= render  "shared/cards", game: game %>
+            <% end %>
+        </div>
+      </details>
   </section>
 
-  <div class="user-bookings mt-5">
-      <h2 class="title-line text-left"><span>Vos locations actuelles</span></h2>
-      
-          <% @user.bookings.each do |booking| %>
-              <%= render "shared/request_card",owner: true, game: booking.game, booking:booking %>
-          <% end %>
+  <section>
+    <details>
+      <summary>
+        <h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span><span>Vos locations actuelles</span></h2>
+      </summary>
+      <% @user.bookings.each do |booking| %>
+          <%= render "shared/request_card",owner: true, game: booking.game, booking:booking %>
+      <% end %>
+    </details>
+  </section>
 
-
-      <h2 class="title-line text-left"><span>Vos requêtes</span></h2>
+  <section>
+    <details>
+      <summary><h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span> <span>Vos requêtes</span></h2></summary>
       <% @user.games.each do |game| %>
         <% game.bookings.each do |booking| %>
-              <%= render "shared/request_card",owner: false, game: game, booking: booking  %>
+          <%= render "shared/request_card",owner: false, game: game, booking: booking  %>
         <% end %>
       <% end %>
+    </details>
+  </section>
 </div>
