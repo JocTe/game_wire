@@ -17,8 +17,9 @@ class GamesController < ApplicationController
       if @games.count == 0
         @games = Game.all
         @state = "#{params[:query]} n'est pas disponible, découvrez notre sélection"
-      end
-      @state = "Voici le résultat de votre recherche pour #{params[:query]}"
+      else
+        @state = "Voici le résultat de votre recherche pour #{params[:query]}"
+    end
     end
   end
 
