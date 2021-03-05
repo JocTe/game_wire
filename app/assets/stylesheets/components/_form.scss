@@ -25,3 +25,15 @@
   background: white;
   border-radius: 2px;
 }
+
+#photo-preview {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#photo-input {
+  display: none;
+}

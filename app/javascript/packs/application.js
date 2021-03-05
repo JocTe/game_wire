@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 import { initFlatpickr } from "../plugins/flatpickr";
+import { previewImageOnFileSelect } from "../components/photo_preview";
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -20,6 +21,7 @@ import { initFlatpickr } from "../plugins/flatpickr";
 document.addEventListener('turbolinks:load', () => {
     // Call your JS functions here
     initFlatpickr();
+    previewImageOnFileSelect()
 });
 
 

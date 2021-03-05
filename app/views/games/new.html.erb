@@ -10,10 +10,12 @@
           <%= f.input :duration, label: 'Temps pour une partie' %>
           <%= f.input :price, label: 'Prix pour une soirée de location' %>
           <%= f.input :photo,
-                    input_html: { class: 'd-none' },
-                    label_html: { class: 'upload-photo'},
-                    label: '📷 Télécharger la photo du jeu',
-                    as: :file %>
+                      input_html: { class: 'hidden', id: 'photo-input' },
+                      label_html: { class: 'upload-photo'},
+                      label: '📷 Télécharger une photo' %>
+          <div class="add-photo">
+            <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+          </div>
           <%= f.submit "Ajouter", class: "btn btn-primary" %>
         <% end %>
       </div>
