@@ -1,6 +1,9 @@
 <div class="container">
   <div class="profile-card mt-5 mb-5">
     <h1>Bonjour <%= @user.username %></h1>
+    <p>Vous avez <%= @user.games.count %> jeux</p>
+    <p>Vous avez faits <%= @user.bookings.count %> demandes de location</p>
+
   </div>
 
   <section class="user-games">
@@ -17,7 +20,7 @@
   <section>
     <details>
       <summary>
-        <h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span><span>Vos locations actuelles</span></h2>
+        <h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span><span>Vos locations</span></h2>
       </summary>
       <% @user.bookings.each do |booking| %>
           <%= render "shared/request_card",owner: true, game: booking.game, booking:booking %>
@@ -26,7 +29,7 @@
   </section>
   <section>
     <details>
-      <summary><h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span> <span>Vos requêtes</span></h2></summary>
+      <summary><h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span> <span>Vos requêtes de locations</span></h2></summary>
       <% @user.games.each do |game| %>
         <% game.bookings.each do |booking| %>
           <%= render "shared/request_card",owner: false, game: game, booking: booking  %>
@@ -35,3 +38,4 @@
     </details>
   </section>
 </div>
+

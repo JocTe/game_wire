@@ -26,7 +26,6 @@
   display: flex;
   background-color: white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  
   border-radius: 10px;
   margin: 20px;
   overflow: hidden;
@@ -120,7 +119,9 @@
   border-width: 2px;
   border-color: $my-blue;
   text-align: center;
-  position: relative;  
+  position: relative; 
+  transition: all 0.15s ease-in-out;
+
   p{
     padding : 10px 20px;
     text-align: center;  
