@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   # get "/mygames", to: "users#games"
   get "/profile", to: "pages#show"
+
   # get "/bookings", to: "users#index"
   resources :bookings do
     member do

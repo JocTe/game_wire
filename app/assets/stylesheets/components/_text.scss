@@ -1,0 +1,18 @@
+.title-line {
+    position: relative;
+   span {
+        background-color: $my-white;
+        padding-right: 10px;
+    }
+    
+    &:after {
+        content:"";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0.5em;
+        border-top: 4px solid $my-ligth-orange;
+        z-index: -1;
+    }
+}

@@ -1,48 +1,37 @@
 <div class="container">
-  <h1>Bonjour <%= @user.username %></h1>
-  <div class="user-games mt-3">
-      <h2>Vos jeux proposés à la location</h2>
-      <div class="row row-cols-3 mt-3">
-          <% @user.games.each do |game| %>
-            <div class="col">
-              <div class="card h-100">
-                <%= image_tag(game.photo.attached? ?  cl_image_path(game.photo.key) : image_path("game_default_picture.jpg"), class: "card-img-top image-sizing") %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= game.name %></h5>
-                  <p class="card-text"><%= game.description.truncate(200) %></p>
-                  <%= link_to "Éditer", game_path(game), class: "btn btn-primary" %>
-                  <%= link_to "Supprimer", game_path(game), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-danger" %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-      </div>
+  <div class="profile-card mt-5 mb-5">
+    <h1>Bonjour <%= @user.username %></h1>
   </div>
 
-  <div class="user-bookings mt-3">
-      <h2>Vos locations actuelles</h2>
-      <div class="row row-cols-3 mt-3">
-          <% @user.bookings.each do |booking| %>
-            <div class="col">
-              <div class="card h-100">
-                <img src='<%= cl_image_path(booking.game.photo.key) %>' class="card-img-top image-sizing" alt="game picture" >
-                <div class="card-body">
-                  <h5 class="card-title"><%= booking.game.name %></h5>
-                  <p>state : <%= booking.state %></p>
-                  <p>owner : <%= booking.game.user.username %></p>
-                  <p class="card-text"><%= booking.game.description.truncate(200) %></p>
-                  <%= link_to "Découvrir", game_path(booking.game), class: "btn btn-primary" %>
-                  <%= link_to "Annuler", game_booking_path(game_id: booking.game, id: booking), method: "DELETE", data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-danger" %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-      </div>
-      <h2>Vos requêtes</h2>
+  <section class="user-games">
+      <details open>
+        <summary><h2 class="title-line text-left" ><span><i class="fas fa-chevron-down"></i> </span><span>Vos jeux proposés à la location</span></h2></summary>
+        <div class="row row-cols-3">
+            <% @user.games.each do |game| %>
+              <%= render  "shared/cards", game: game %>
+            <% end %>
+        </div>
+      </details>
+  </section>
+
+  <section>
+    <details>
+      <summary>
+        <h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span><span>Vos locations actuelles</span></h2>
+      </summary>
+      <% @user.bookings.each do |booking| %>
+          <%= render "shared/request_card",owner: true, game: booking.game, booking:booking %>
+      <% end %>
+    </details>
+  </section>
+  <section>
+    <details>
+      <summary><h2 class="title-line text-left"><span><i class="fas fa-chevron-down"></i> </span> <span>Vos requêtes</span></h2></summary>
       <% @user.games.each do |game| %>
         <% game.bookings.each do |booking| %>
-              <%= render "shared/request_card", game: game, booking: booking  %>
+          <%= render "shared/request_card",owner: false, game: game, booking: booking  %>
         <% end %>
       <% end %>
+    </details>
+  </section>
 </div>
-
