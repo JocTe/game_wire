@@ -5,11 +5,11 @@
 
     <div class="request-card-info">
         <div class="request-card-user">
-            <h6>Status</h6>
+            <h6>Statut</h6>
             <h5><%= booking.state %></h5>
         </div>
 
-        <h6>jeu</h6>
+       
 
         <h2><%= link_to "#{booking.game.name}",  game_path(booking.game), class: "game-name-link"%></h2>
         <p><%= booking.start_at %>  au <%= booking.end_at %></p>

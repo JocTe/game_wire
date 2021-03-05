@@ -41,7 +41,7 @@
       <h2>Vos requêtes</h2>
       <% @user.games.each do |game| %>
         <% game.bookings.each do |booking| %>
-              <%= render  "shared/request_card", game: game, booking: booking  %>
+              <%= render "shared/request_card", game: game, booking: booking  %>
         <% end %>
       <% end %>
 </div>
