@@ -16,9 +16,9 @@ Booking.destroy_all
 
 
 puts "------Creating Users------"
-jo = User.create!(first_name: "Jo", last_name: "Jordi", username: "JoJo", email:"jo@something.com", address: "3 rue dans ton coeur", password: "545454")
-alexis = User.create!(first_name: "Alex", last_name: "Bibop", username: "Al", email:"al@something.com", address: "5 place des enjolivé", password: "545454")
-morgane = User.create!(first_name: "Morgane", last_name: "Moma", username: "Mormor", email:"mo@something.com", address: "17 boulevard des cappucines", password: "545454")
+jo = User.create!(first_name: "Jordane", last_name: "Jordi", username: "Jordane", email:"jo@something.com", address: "3 rue dans ton coeur", password: "545454")
+alexis = User.create!(first_name: "Alexis", last_name: "Bibop", username: "Alexis", email:"al@something.com", address: "5 place des enjolivé", password: "545454")
+morgane = User.create!(first_name: "Morgane", last_name: "Moma", username: "Morgane", email:"mo@something.com", address: "17 boulevard des cappucines", password: "545454")
 
 users = [jo, alexis, morgane]
 
@@ -52,9 +52,9 @@ colt.photo.attach(io: coltPicture, filename: 'colt.jpg', content_type: 'image/jp
 
 puts "------Creating Bookings------"
 
-Booking.create!(user: jo, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"accepté")
-Booking.create!(user: jo, game:themind, start_at: Date.new(2021,03,07), end_at: Date.new(2021,04,07), state:"accepté")
-Booking.create!(user: alexis, game:degoblinade, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"en attente")
-Booking.create!(user: morgane, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"refusé")
+Booking.create!(user: jo, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"Accepté")
+Booking.create!(user: jo, game:themind, start_at: Date.new(2021,03,07), end_at: Date.new(2021,04,07), state:"Accepté")
+Booking.create!(user: alexis, game:degoblinade, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"En attente...")
+Booking.create!(user: morgane, game:timebomb, start_at: Date.new(2021,03,02), end_at: Date.new(2021,03,05), state:"Refusé")
 
 puts "------Done------"
