@@ -1,10 +1,11 @@
-<%= form_tag games_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Rechercher un jeu"
-  %>
-  <button type="submit" class="btn btn-danger">
-    Delete <i class="icon-check"></i>
+<div class="searchbar">
+  <%= form_tag games_path, id:'searchform', method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control",
+                        placeholder: "Rechercher un jeu" %>
+  <button type="submit" class="btn btn-secondary">
+    <i class="fas fa-search"></i>
   </button>
-<% end %>
+  <% end %>
+</div>
+
+

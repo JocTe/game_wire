@@ -14,6 +14,11 @@ class GamesController < ApplicationController
         OR description @@ :query \
         "
       @games = policy_scope(Game).where(sql_query, query: "%#{params[:query]}%")
+      if @games.count == 0
+        @games = Game.all
+        @state = "#{params[:query]} n'est pas disponible, découvrez notre sélection"
+      end
+      @state = "Voici le résultat de votre recherche pour #{params[:query]}"
     end
   end
 
@@ -29,7 +34,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.user = current_user
-    authorize @game    
+    authorize @game
     if @game.save
       redirect_to game_path(@game)
     else
