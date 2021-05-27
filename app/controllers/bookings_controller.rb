@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking.state = "En attente..."
 
     authorize @booking
-    if @booking.save
+    if @booking.save!
       redirect_to profile_path
     else
       redirect_to game_path(@game)
